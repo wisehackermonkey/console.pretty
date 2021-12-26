@@ -1,5 +1,5 @@
 {
-  "name": "@wisehackermonkey/console.pretty",
+  "name": "console-pretty",
   "version": "0.1.0",
   "description": "console.log with pretty colors",
   "main": "index.js",
