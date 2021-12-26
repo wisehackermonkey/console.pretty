@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "console.log with pretty colors",
   "main": "index.js",
+  "sourceType": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

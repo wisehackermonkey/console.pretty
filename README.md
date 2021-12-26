@@ -52,6 +52,30 @@ or
 $ yarn add console.pretty
 ```
 
+# how to build package from source
+```bash
+npm install 
+npm install -g browserify
+npm run build
+browserify source.js -o browser.js
+
+```
+# examples
+```js
+require( 'console.pritty' )( console );
+
+console.pritty("works",{border:true,color:"brown",background:"blue",borderSize:"1mm",image:"https://emojis.slackmojis.com/emojis/images/1539890226/4845/rickroll.gif?1539890226"})
+
+console.pritty("We're Hiring!",{  color:"black",image:"https://media.istockphoto.com/photos/abstract-background-green-picture-id621484894?b=1&k=20&m=621484894&s=170667a&w=0&h=N5jh9me3fiSjYCMol3moBu3enlQzNgrwG1GXX5N4uhA="})
+```
+![](assets/2021-12-26-02-05-19.png)
+
+### Photo with border
+```js
+console.pritty("We're Hiring!",{ color:"black",  border:true,image:"https://media.istockphoto.com/photos/abstract-background-green-picture-id621484894?b=1&k=20&m=621484894&s=170667a&w=0&h=N5jh9me3fiSjYCMol3moBu3enlQzNgrwG1GXX5N4uhA="})
+
+```
+![](assets/2021-12-26-02-15-21.png)
 ## API
 
 By default, the following colors are available:
