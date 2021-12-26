@@ -1,5 +1,5 @@
 {
-  "name": "console.pretty",
+  "name": "@wisehackermonkey/console.pretty",
   "version": "0.1.0",
   "description": "console.log with pretty colors",
   "main": "index.js",
@@ -13,16 +13,16 @@
     "color",
     "colors"
   ],
-  "author": "Brian Vaughn <brian.david.vaughn@gmail.com>",
+  "author": "Oran C <oranbusiness@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bvaughn/console.pretty.git"
+    "url": "git+https://github.com/wisehackermonkey/console.pretty.git"
   },
   "bugs": {
-    "url": "https://github.com/bvaughn/console.pretty/issues"
+    "url": "https://github.com/wisehackermonkey/console.pretty/issues"
   },
-  "homepage": "https://github.com/bvaughn/console.pretty#readme",
+  "homepage": "https://github.com/wisehackermonkey/console.pretty#readme",
   "prettier": {
     "printWidth": 80,
     "tabWidth": 2,
