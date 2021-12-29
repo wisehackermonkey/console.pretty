@@ -1,3 +1,4 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 
 const cssColors = require("./test/colors.json")
 
@@ -109,3 +110,112 @@ module.exports = {
     con.pretty = (...args) => runPrint(prettyCore(...args))
   },
 };
+
+},{"./test/colors.json":2}],2:[function(require,module,exports){
+module.exports={
+    "names": [
+        "black",
+        "silver",
+        "gray",
+        "white",
+        "maroon",
+        "red",
+        "purple",
+        "fuchsia",
+        "green",
+        "lime",
+        "olive",
+        "yellow",
+        "navy",
+        "blue",
+        "teal",
+        "aqua",
+        "rebeccapurple"
+    ],
+    "black": {
+        "name": "black",
+        "hex": "#000000",
+        "rgb": "0,0,0"
+    },
+    "silver": {
+        "name": "silver",
+        "hex": "#C0C0C0",
+        "rgb": "192,192,192"
+    },
+    "gray": {
+        "name": "gray",
+        "hex": "#808080",
+        "rgb": "128,128,128"
+    },
+    "white": {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "rgb": "255,255,255"
+    },
+    "maroon": {
+        "name": "maroon",
+        "hex": "#800000",
+        "rgb": "128,0,0"
+    },
+    "red": {
+        "name": "red",
+        "hex": "#FF0000",
+        "rgb": "255,0,0"
+    },
+    "purple": {
+        "name": "purple",
+        "hex": "#800080",
+        "rgb": "128,0,128"
+    },
+    "fuchsia": {
+        "name": "fuchsia",
+        "hex": "#FF00FF",
+        "rgb": "255,0,255"
+    },
+    "green": {
+        "name": "green",
+        "hex": "#008000",
+        "rgb": "0,128,0"
+    },
+    "lime": {
+        "name": "lime",
+        "hex": "#00FF00",
+        "rgb": "0,255,0"
+    },
+    "olive": {
+        "name": "olive",
+        "hex": "#808000",
+        "rgb": "128,128,0"
+    },
+    "yellow": {
+        "name": "yellow",
+        "hex": "#FFFF00",
+        "rgb": "255,255,0"
+    },
+    "navy": {
+        "name": "navy",
+        "hex": "#000080",
+        "rgb": "0,0,128"
+    },
+    "blue": {
+        "name": "blue",
+        "hex": "#0000FF",
+        "rgb": "0,0,255"
+    },
+    "teal": {
+        "name": "teal",
+        "hex": "#008080",
+        "rgb": "0,128,128"
+    },
+    "aqua": {
+        "name": "aqua",
+        "hex": "#00FFFF",
+        "rgb": "0,255,255"
+    },
+    "rebeccapurple": {
+        "name": "rebeccapurple",
+        "hex": "#663399",
+        "rgb": "102,51,153"
+    }
+}
+},{}]},{},[1]);

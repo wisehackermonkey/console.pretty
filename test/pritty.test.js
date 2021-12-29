@@ -59,7 +59,7 @@ test("prettyCore accepts a non empty options object, with color attribute", () =
     const message = "hello"
     const color = "red"
     const background = "yellow"
-    const borderSize = "4"
+    const borderSize = "4mm"
     const fontSize = "25px"
     const image = "https://i.imgur.com/XqY6QQl.png"
     const options = {
@@ -69,7 +69,7 @@ test("prettyCore accepts a non empty options object, with color attribute", () =
         fontSize: fontSize,
         image: image
     }
-    const expected = ["%chello", "color:red;background: yellow; font-size: 25px;  font-size: 25px;  background: url('https://i.imgur.com/XqY6QQl.png')  no-repeat center; background-size: 100vh auto; padding:500px\");"]
+    const expected = ["%chello", "color: red;background: yellow;border-size: 4mm;font-size: 25px;font-size: 25px;  background: url('https://i.imgur.com/XqY6QQl.png')  no-repeat center; background-size: 100vh auto; padding:500px\");"]
     const actual = prettyCore(message, options)
     expect(actual).toStrictEqual(expected)
 })
@@ -77,13 +77,23 @@ test("prettyCore accepts a non empty options object, with color attribute", () =
 // prettyCore accepts color attribute for first argument, and a non empty options object for second argument
 test("prettyCore accepts color attribute for first argument, and a non empty options object for second argument", () => {
     //assert arguments to console.log are passed through
-    const color = "red"
+    const color = "blue"
     const fontSize = "25px"
     const options = {
         color: color,
         fontSize: fontSize
     }
-    const expected = ["%chello", "color:red; font-size: 25px;"]
-    const actual = prettyCore("hello", "red", options)
+    const expected = ["%chello", `color: ${color};font-size: ${fontSize};`]
+    const actual = prettyCore("hello", color, options)
+    expect(actual).toStrictEqual(expected)
+})
+
+// prettyCore accepts color attribute for first argument, and color attribute for second argument
+test("prettyCore accepts color attribute for first argument, and color attribute for second argument", () => {
+    //assert arguments to console.log are passed through
+    const color = "blue"
+    const background = "yellow"
+    const expected = ["%chello", `color: ${color};background: ${background};`]
+    const actual = prettyCore("hello", color, background)
     expect(actual).toStrictEqual(expected)
 })

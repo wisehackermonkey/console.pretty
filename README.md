@@ -55,10 +55,7 @@ $ yarn add console.pretty
 # how to build package from source
 ```bash
 npm install 
-npm install -g browserify
 npm run build
-browserify source.js -o browser.js
-
 ```
 # examples
 ```js
@@ -80,14 +77,23 @@ console.pritty("We're Hiring!",{ color:"black",  border:true,image:"https://medi
 
 By default, the following colors are available:
 
-- blue
-- brown
+- black
+- silver
 - gray
-- green
+- white
+- maroon
 - red
-- orange
 - purple
+- fuchsia
+- green
+- lime
+- olive
 - yellow
+- navy
+- blue
+- teal
+- aqua
+- rebeccapurple [for the historically interested](https://css-tricks.com/rebbeccapurple-663399/) also [here](https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html)   
 
 However, you can also build your own logger using the provided `createLogger`.
 
