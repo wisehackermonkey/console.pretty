@@ -5,7 +5,7 @@
     <img height="80" width="80" alt="artist palette" src="https://raw.githubusercontent.com/bvaughn/console.pretty/master/other/artist-palette.png" />
   </a>
 
-  <p>Pretty console logging.</p>
+  <p>Pretty console logging, advance features like bg photos and css</p>
 </div>
 
 <hr />
@@ -97,6 +97,13 @@ import { createLogger } from "console.pretty";
 const pink = createLogger("#FFC0CB", "#000000");
 
 pink("My pink logger");
+```
+
+# Maintainer information:
+## How to run tests
+```bash
+npm install -g jest
+npm test
 ```
 
 ## LICENSE

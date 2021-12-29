@@ -5,7 +5,7 @@
   "main": "index.js",
   "sourceType": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --notify"
   },
   "keywords": [
     "console",
@@ -36,6 +36,8 @@
     "proseWrap": "preserve"
   },
   "devDependencies": {
+    "jest": "^27.4.5",
+    "node-notifier": "^10.0.0",
     "prettier": "^1.14.3"
   }
 }
