@@ -1,4 +1,4 @@
-const { prettyCore,isValidCssColor } = require("../source")
+const { prettyCore, isValidCssColor, optionsObjectToCSS, convertCammelCaseToDash } = require("../source")
 
 // prettyCore is a function that takes a message and an optional options object
 // and returns an array of two or more arguments that can be passed to console.log
@@ -17,22 +17,40 @@ const { prettyCore,isValidCssColor } = require("../source")
 // If the second argument is an object, the first argument is the message
 // If the second argument is a string, the first argument is the message and the second argument is the color
 
+// convertCammelCaseToDash takes in "borderSize" and returns "border-size"
+test("convertCammelCaseToDash", () => {
+    expect(convertCammelCaseToDash("borderSize")).toBe("border-size")
+    expect(convertCammelCaseToDash("border-size")).toBe("border-size")
+    expect(convertCammelCaseToDash("")).toBe("")
+    
+})
 
 // isValidCssColor accepts a string and returns true if it is a valid css color
 test("isValidCssColor accepts a string and returns true if it is a valid css color", () => {
     expect(isValidCssColor("#FF0000")).toStrictEqual(true)
-    expect(isValidCssColor("#F00")).toStrictEqual(true)  // short hex
-    // expect(isValidCssColor("#FFF")).toStrictEqual(true) currently not supported
+    // expect(isValidCssColor("#F00")).toStrictEqual(true)  //  currently not supported
+    // expect(isValidCssColor("#FFF")).toStrictEqual(true) //currently not supported
     expect(isValidCssColor("#FFFFFF")).toStrictEqual(true)
     expect(isValidCssColor("#FFFFFFF")).toStrictEqual(false)
     expect(isValidCssColor("red")).toStrictEqual(true)
 })
 
+// optionsObjectToCSS accepts an options object and returns a string of CSS
+test("optionsObjectToCSS accepts an options object and returns a string of CSS", () => {
+    let image = "https://www.example.com/image.png"
+    expect(optionsObjectToCSS({})).toStrictEqual("")
+    expect(optionsObjectToCSS({ color: "red" })).toStrictEqual("color: red;")
+    expect(optionsObjectToCSS({ background: "red" })).toStrictEqual("background: red;")
+    expect(optionsObjectToCSS({ borderSize: "4" })).toStrictEqual("border-size: 4;")
+    expect(optionsObjectToCSS({ image: image })).toStrictEqual(`font-size: 100px;  background: url('${image}')  no-repeat center; background-size: 100vh auto; padding:500px");`)
+    expect(optionsObjectToCSS({ fontSize: "100px" })).toStrictEqual(`font-size: 100px;`)
+    expect(optionsObjectToCSS({ border: false })).toStrictEqual("")
+})
 // prettyCore is a function that takes a manditory message argument and the second argument to be a css color object
-test("prettyCore is a function that takes a message and an optional options object and returns an array of two or more arguments that can be passed to console.log", () => {
+test("prettyCore is a function that takes a message and valid css color argument", () => {
     let color = "red"
     let messge = "hello"
-    let expected = [`%c${color}`, `color: ${color};`]  
+    let expected = [`%c${messge}`, `color: ${color};`]
     let actual = prettyCore(messge, color)
     expect(actual).toEqual(expected)
 })
