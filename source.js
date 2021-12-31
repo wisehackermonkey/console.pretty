@@ -6,39 +6,41 @@ const prettyCore = (...args) => {
   const options = [...args][optionsArgumentIndex - 1] ?? {}
   const firstArg = [...args][0] ?? {}
 
-  
+
+
   if (args.length < 2) {
     return new Error("prettyCore requires at least two arguments")
   }
-  
+
+
   if (typeof args[0] === "string" && typeof args[1] === "string" && typeof args[2] === "object") {
     let colorArgumentIndex = 1
     let optionsArgumentIndex = 2
     return [`%c${firstArg}`, `${optionsObjectToCSS(options)}`]
   }
+
   //check if first argument is a string and the second is a valid css color and the third is an valid css color
   if (typeof args[0] === "string" && isValidCssColor(args[1]) && isValidCssColor(args[2])) {
     let colorArgumentIndex = 1
     let backgroundColorArgumentIndex = 2
     return [`%c${firstArg}`, `color: ${args[colorArgumentIndex]};background: ${args[backgroundColorArgumentIndex]};`]
   }
-  
+  if (typeof args[0] === "string" && typeof args[1] === "string" && isValidCssColor(args[1])) {
+    let colorArgumentIndex = 1
+    return [`%c${firstArg}`, `color: ${args[1]};`]
+  }
   if (typeof args[0] === "string" && typeof args[1] === "object") {
 
     let extraArgs = [...args].slice(1, -1)
     return [`%c${firstArg}`, optionsObjectToCSS(options), ...extraArgs]
   }
-  if (typeof args[0] === "string" && typeof args[1] === "string" && isValidCssColor(args[1])) {
-    let colorArgumentIndex = 1
-    return [`%c${firstArg}`, `color: ${args[colorArgumentIndex]};`]
-  }
-
-
 }
+
+
 const optionsObjectToCSS = (options) => {
   const styling = {
-    "default": `background: white;color: green;box-shadow: inset  5em 1em gold;border: ${options?.borderSize ?? "4"}mm ridge rgba(170, 50, 220, .6);`,
-    "border": `box-shadow: inset  5em 1em gold;border:  ${options?.borderSize ?? "4"}mm ridge rgba(170, 50, 220, .6);`,
+    "default": `background: white;color: green;box-shadow: inset  5em 1em gold;border: ${options?.border ?? "4"}mm ridge rgba(170, 50, 220, .6);`,
+    "border": `box-shadow: inset  5em 1em gold;border:  ${options?.border ?? "4"}mm ridge rgba(170, 50, 220, .6);`,
     "fontSize": `font-size: ${options.fontSize ?? "25px"};`,
     "image": `font-size: ${options.fontSize ?? "100px"};  background: url('${options?.image}')  no-repeat center; background-size: 100vh auto; padding:500px");`
   }
@@ -88,24 +90,27 @@ const isValidCssColor = (color) => {
   return false
 }
 
-const runPrint = (...args) => console.log(...args)
 const createLogger = (message, color, background) => console.pretty(message, { color: color, background: background })
 module.exports = {
 
-  blue: (...message) => console.pretty(...message, { background: "#1E88E5", color: "#90CAF9" }),// createLogger("#1E88E5", "#90CAF9"),
-  brown: (...message) => console.pretty(...message, { background: "#6D4C41", color: "#D7CCC8" }),
-  gray: (...message) => console.pretty(...message, { background: "#212121", color: "#BDBDBD" }),
-  green: (...message) => console.pretty(...message, { background: "#388E3C", color: "#A5D6A7" }),
-  red: (...message) => console.pretty(...message, { background: "#E53935", color: "#EF9A9A" }),
-  orange: (...message) => console.pretty(...message, { background: "#F4511E", color: "#FFAB91" }),
-  purple: (...message) => console.pretty(...message, { background: "#8E24AA", color: "#E1BEE7" }),
-  yellow: (...message) => console.pretty(...message, { background: "#FFD600", color: "#FFF59D" }),
   prettyCore: prettyCore,
   isValidCssColor: isValidCssColor,
   optionsObjectToCSS: optionsObjectToCSS,
   convertCammelCaseToDash: convertCammelCaseToDash,
-  pretty: (con) => {
+  setup: (con) => {
 
-    con.pretty = (...args) => runPrint(prettyCore(...args))
-  },
+    con.pretty = (...args) => {
+      let results = prettyCore(...args)
+      console.log(...results)
+    }
+    con.blue = (...message) => con.pretty(...message, { background: "#1E88E5", color: "#90CAF9" })
+    con.brown = (...message) => con.pretty(...message, { background: "#6D4C41", color: "#D7CCC8" })
+    con.gray = (...message) => con.pretty(...message, { background: "#212121", color: "#BDBDBD" })
+    con.green = (...message) => con.pretty(...message, { background: "#388E3C", color: "#A5D6A7" })
+    con.red = (...message) => con.pretty(...message, { background: "#E53935", color: "#EF9A9A" })
+    con.orange = (...message) => con.pretty(...message, { background: "#F4511E", color: "#FFAB91" })
+    con.purple = (...message) => con.pretty(...message, { background: "#8E24AA", color: "#E1BEE7" })
+    con.yellow = (...message) => con.pretty(...message, { background: "#FFD600", color: "#FFF59D" })
+
+  }
 };

@@ -22,7 +22,7 @@ test("convertCammelCaseToDash", () => {
     expect(convertCammelCaseToDash("borderSize")).toBe("border-size")
     expect(convertCammelCaseToDash("border-size")).toBe("border-size")
     expect(convertCammelCaseToDash("")).toBe("")
-    
+
 })
 
 // isValidCssColor accepts a string and returns true if it is a valid css color
@@ -33,6 +33,11 @@ test("isValidCssColor accepts a string and returns true if it is a valid css col
     expect(isValidCssColor("#FFFFFF")).toStrictEqual(true)
     expect(isValidCssColor("#FFFFFFF")).toStrictEqual(false)
     expect(isValidCssColor("red")).toStrictEqual(true)
+    //TODO
+    //console.pretty("I like red...", "rgb(255,0,0)", "rgb(255,255,0)")
+    // console.pretty("I like red...", "rgba(255,0,0,0.5)", "rgba(255,255,0,0.5)")
+    // console.pretty("I like red...", "hsl(0,100%,50%)", "hsl(0,100%,50%)")
+    // console.pretty("I like red...", "hsla(0,100%,50%,0.5)", "hsla(0,100%,50%,0.5)")
 })
 
 // optionsObjectToCSS accepts an options object and returns a string of CSS
@@ -48,11 +53,10 @@ test("optionsObjectToCSS accepts an options object and returns a string of CSS",
 })
 // prettyCore is a function that takes a manditory message argument and the second argument to be a css color object
 test("prettyCore is a function that takes a message and valid css color argument", () => {
-    let color = "red"
-    let messge = "hello"
-    let expected = [`%c${messge}`, `color: ${color};`]
-    let actual = prettyCore(messge, color)
-    expect(actual).toEqual(expected)
+
+    expect(prettyCore("hello", "red")).toEqual([`%c${"hello"}`, `color: ${"red"};`])
+    expect(prettyCore("hello", "orange")).toEqual([`%c${"hello"}`, `color: ${"orange"};`])
+
 })
 test("prettyCore accepts a non empty options object, with color attribute", () => {
     //assert arguments to console.log are passed through

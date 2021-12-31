@@ -137,6 +137,7 @@ console.pretty("rebeccapurple",{color:"rebeccapurple"})
 
 
 # Color Loggers
+![](assets/2021-12-30-22-23-51.png)
 ```js
 console.blue("blue")
 console.brown("brown")
@@ -158,7 +159,7 @@ npm run build
 ## How to run tests
 ```bash
 npm install -g jest
-npm test
+npm run test
 ```
 
 
